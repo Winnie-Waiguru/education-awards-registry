@@ -1,7 +1,9 @@
+import Login from "./pages/auth/Login";
+
 function App() {
   return (
     <>
-      <h1 className="heading">Vite + React</h1>
+      <Login />
     </>
   );
 }

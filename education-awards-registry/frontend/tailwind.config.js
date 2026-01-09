@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#009edc",
+        secondary: "#00425C",
+      },
+      fontFamily: {
+        manrope: ["Manrope", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-}
-
+};

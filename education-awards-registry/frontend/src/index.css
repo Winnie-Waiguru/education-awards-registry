@@ -1,7 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.heading {
-  @apply text-3xl font-bold underline text-blue-600;
+@layer base {
+  body {
+    @apply font-manrope;
+  }
+}
+
+@layer components {
+  .heading {
+    @apply text-4xl font-bold;
+  }
+
+  .label-txt {
+    @apply font-bold text-lg;
+  }
+
+  .input-container {
+    @apply flex items-center justify-between max-w-lg h-[72px] px-2 rounded-2xl border border-secondary/30 shadow-lg;
+  }
+
+  .input-field {
+    @apply w-full bg-transparent outline-none;
+  }
+
+  .icon {
+    @apply w-[24px] h-[24px] text-secondary/70 cursor-pointer;
+  }
 }
