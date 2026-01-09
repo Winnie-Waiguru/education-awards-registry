@@ -16,11 +16,11 @@
   }
 
   .label-txt {
-    @apply font-bold text-lg;
+    @apply mt-4 font-bold text-lg;
   }
 
   .input-container {
-    @apply flex items-center justify-between max-w-lg h-[72px] px-2 rounded-2xl border border-secondary/30 shadow-lg;
+    @apply flex items-center justify-between max-w-lg h-[72px] mb-4 rounded-2xl border shadow-lg  px-2 focus-within:border-input-outline/70 focus-within:border-2;
   }
 
   .input-field {
@@ -29,5 +29,9 @@
 
   .icon {
     @apply w-[24px] h-[24px] text-secondary/70 cursor-pointer;
+  }
+
+  .error-msg {
+    @apply text-error text-sm mt-1 ml-2;
   }
 }
