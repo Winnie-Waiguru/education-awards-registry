@@ -34,4 +34,8 @@
   .error-msg {
     @apply text-error text-sm mt-1 ml-2;
   }
+
+  .cta {
+    @apply text-primary text-base font-bold underline underline-offset-2;
+  }
 }
