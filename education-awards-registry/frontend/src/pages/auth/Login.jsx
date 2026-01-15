@@ -1,5 +1,7 @@
 import { useState } from "react";
 import InputWrapper from "../../components/common/InputWrapper";
+import PrimaryButton from "../../components/common/PrimaryButton";
+
 import { MdOutlineEmail } from "react-icons/md";
 import { FaEyeSlash } from "react-icons/fa";
 
@@ -19,6 +21,7 @@ function Login() {
         htmlFor="email"
         type="email"
         placeholder="John Doe"
+        aria-hidden="true"
       >
         <MdOutlineEmail className="icon" />
       </InputWrapper>
@@ -38,7 +41,7 @@ function Login() {
               type="checkbox"
               checked={isRemembered}
               onChange={handleRememberMeChange}
-              className="appearance-none w-full h-full border border-input-outline/30 rounded-sm shadow-lg"
+              className="checkbox-container"
             />
             {/* Conditionally render checkmark  */}
             {isRemembered && (
@@ -70,6 +73,7 @@ function Login() {
           Forgot password
         </a>
       </div>
+      <PrimaryButton label="Log In" type="submit" onClick={() => {}} />
     </>
   );
 }
