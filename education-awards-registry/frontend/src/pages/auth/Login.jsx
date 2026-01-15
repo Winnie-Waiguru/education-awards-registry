@@ -62,18 +62,21 @@ function Login() {
             )}
           </div>
 
-          <label
-            htmlFor="remember-btn"
-            className="font-bold text-base cursor-pointer"
-          >
-            Remember me
-          </label>
+          <label htmlFor="remember-btn">Remember me</label>
         </div>
         <a href="#" className="cta">
           Forgot password
         </a>
       </div>
       <PrimaryButton label="Log In" type="submit" onClick={() => {}} />
+      <p>
+        Don't have an account?{" "}
+        <span>
+          <a href="#" className="cta">
+            Register here
+          </a>
+        </span>
+      </p>
     </>
   );
 }

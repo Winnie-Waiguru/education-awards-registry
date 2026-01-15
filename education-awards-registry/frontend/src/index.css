@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-manrope;
+    @apply font-manrope text-base bg-white text-black;
   }
 }
 
