@@ -74,9 +74,7 @@ function Login() {
           error={errors.password}
           required
           placeholder="Enter your password"
-        >
-          <FaEyeSlash className="icon" />
-        </InputWrapper>
+        ></InputWrapper>
         <div className="flex flex-row justify-between mt-4 px-2">
           <div className="flex flex-row gap-2">
             <div className="relative  w-[20px] h-[20px]">

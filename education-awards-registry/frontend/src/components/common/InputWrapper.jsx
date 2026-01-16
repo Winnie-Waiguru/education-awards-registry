@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 function InputWrapper({
   label,
   id,
@@ -9,6 +12,17 @@ function InputWrapper({
   children: icon,
   ...rest
 }) {
+  const [inputType, setInputType] = useState(type);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setInputType(isPasswordVisible ? type : "text");
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  // check if the input type is password to show the toggle icon
+  const iconToShow = type === "password";
+
   return (
     <div>
       <label htmlFor={id} className="label-txt">
@@ -20,7 +34,7 @@ function InputWrapper({
           className={`input-field ${
             error ? "border-error" : "border-input-outline/30"
           }`}
-          type={type}
+          type={inputType}
           id={id}
           name={id}
           placeholder={placeholder}
@@ -30,7 +44,17 @@ function InputWrapper({
           aria-describedby={error ? `${id}-error` : undefined}
           {...rest}
         />
-        <button type="button"> {icon}</button>
+        <button type="button" onClick={togglePasswordVisibility}>
+          {iconToShow ? (
+            isPasswordVisible ? (
+              <FaEye className="icon" />
+            ) : (
+              <FaEyeSlash className="icon" />
+            )
+          ) : (
+            icon
+          )}
+        </button>
       </div>
       {error && (
         <div id={`${id}-error`} className="error-msg">
