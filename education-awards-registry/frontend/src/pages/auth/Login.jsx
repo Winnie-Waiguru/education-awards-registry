@@ -26,7 +26,6 @@ function Login() {
 
     if (password.length < 8) {
       newErrors.password = "Password must be at least 8 characters long";
-      console.log("Errors:", newErrors);
     }
 
     setErrors(newErrors);
@@ -40,7 +39,14 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center">
+      <div className="w-full">
+        <img
+          src="logo.png"
+          alt="institution-logo"
+          className="w-[266px] h-[120px] "
+        />
+      </div>
       <FormWrapper onSubmit={handleSubmit} className="form-wrapper">
         <h1 className="heading">Admin Login</h1>
         <InputWrapper
