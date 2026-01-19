@@ -44,17 +44,21 @@ function InputWrapper({
           aria-describedby={error ? `${id}-error` : undefined}
           {...rest}
         />
-        <button type="button" onClick={togglePasswordVisibility}>
-          {iconToShow ? (
-            isPasswordVisible ? (
+        {iconToShow ? (
+          <button
+            type="button"
+            onClick={togglePasswordVisibility}
+            aria-label="show-password"
+          >
+            {isPasswordVisible ? (
               <FaEye className="icon" />
             ) : (
               <FaEyeSlash className="icon" />
-            )
-          ) : (
-            icon
-          )}
-        </button>
+            )}
+          </button>
+        ) : (
+          icon
+        )}
       </div>
       {error && (
         <div id={`${id}-error`} className="error-msg">
