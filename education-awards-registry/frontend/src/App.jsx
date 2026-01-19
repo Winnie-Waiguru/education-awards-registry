@@ -1,9 +1,9 @@
-import Signup from "./pages/auth/Signup";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 function App() {
   return (
     <>
-      <Signup />
+      <ForgotPassword />
     </>
   );
 }
