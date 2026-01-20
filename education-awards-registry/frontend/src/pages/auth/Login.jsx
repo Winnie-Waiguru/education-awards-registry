@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import validator from "validator";
+
 import FormWrapper from "../../components/common/FormWrapper";
 import InputWrapper from "../../components/common/InputWrapper";
 import PrimaryButton from "../../components/common/PrimaryButton";
@@ -109,17 +111,17 @@ function Login() {
 
               <label htmlFor="remember-btn">Remember me</label>
             </div>
-            <a href="#" className="cta">
-              Forgot password
-            </a>
+            <Link to="/forgot-password" className="cta">
+              Forgot password?
+            </Link>
           </div>
           <PrimaryButton label="Log In" type="submit" onClick={() => {}} />
           <p>
             Don't have an account?{" "}
             <span>
-              <a href="#" className="cta">
+              <Link to="/signup" className="cta">
                 Register here
-              </a>
+              </Link>
             </span>
           </p>
         </FormWrapper>

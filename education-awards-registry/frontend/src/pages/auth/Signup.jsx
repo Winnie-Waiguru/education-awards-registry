@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import FormWrapper from "../../components/common/FormWrapper";
 import InputWrapper from "../../components/common/InputWrapper";
@@ -78,11 +79,11 @@ function Signup() {
 
           <PrimaryButton label="Register" type="submit" onClick={() => {}} />
           <p>
-            Already have an account?
+            Already have an account?{" "}
             <span>
-              <a href="#" className="cta">
+              <Link to="/" className="cta">
                 Log in here
-              </a>
+              </Link>
             </span>
           </p>
         </FormWrapper>
