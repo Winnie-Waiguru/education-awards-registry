@@ -43,7 +43,7 @@ function Login() {
         <img
           src="logo.png"
           alt="institution-logo"
-          className="w-[266px] h-auto  "
+          className="w-[266px] h-auto "
         />
       </header>
       <main className="flex flex-col items-center">

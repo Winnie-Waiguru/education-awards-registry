@@ -35,17 +35,10 @@ function ForgotPassword() {
 
   return (
     <>
-      <header className="flex justify-center my-4">
-        <img
-          src="logo.png"
-          alt="institution-logo"
-          className="w-[266px] h-auto  "
-        />
-      </header>
       <main className="flex flex-col items-center">
         <div className="w-full"></div>
         <FormWrapper className="form-wrapper" onSubmit={handlePasswordReset}>
-          <div className="flex flex-row gap-6  ">
+          <div className="flex flex-row gap-6 mt-4 mb-10 md:mb-6 ">
             <MdArrowBack className="icon size-8" aria-hidden="true" />
             <h1 className="heading">Forgot Password</h1>
           </div>
