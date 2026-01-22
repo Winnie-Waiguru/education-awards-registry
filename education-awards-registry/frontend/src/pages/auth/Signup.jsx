@@ -14,7 +14,7 @@ function Signup() {
   const [schoolEmail, setSchoolEmail] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleRegistration = (e) => {
+  const handleRegistration = async (e) => {
     e.preventDefault(); //prevent page reload
 
     // Handle Signup Logic
@@ -30,7 +30,24 @@ function Signup() {
     if (Object.keys(newErrors).length === 0) {
       // Reset errors
       setErrors({});
-      console.log("Registration successful");
+      // Proceed with registration logic (e.g., API call)
+      try {
+        const response = await fetch(
+          "http://localhost:4000/api/register-school",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ schoolName, schoolEmail }),
+          },
+        );
+
+        const data = await response.json();
+        console.log("Registration successful:", data);
+      } catch (error) {
+        console.error("Registration error:", error);
+      }
     }
   };
 
