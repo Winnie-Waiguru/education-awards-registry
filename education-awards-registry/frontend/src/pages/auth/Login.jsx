@@ -16,7 +16,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); //prevent page reload
 
     // errors handling
@@ -33,9 +33,29 @@ function Login() {
 
     // If no errors, proceed with login
     if (Object.keys(newErrors).length === 0) {
-      console.log("Logging in with", { email, password, isRemembered });
       // Reset errors
       setErrors({});
+
+      try {
+        // send login request to backend
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.text();
+          throw new Error(`Login failed: ${errorData}`);
+        }
+
+        const data = await response.json();
+        console.log("Login Successful:", data);
+      } catch (error) {
+        console.error("Login error:", error);
+      }
     }
   };
 
@@ -63,6 +83,7 @@ function Login() {
             }}
             error={errors.email}
             required
+            autoComplete="email"
           >
             <MdOutlineEmail className="icon" aria-hidden="true" />
           </InputWrapper>
@@ -77,6 +98,7 @@ function Login() {
             error={errors.password}
             required
             placeholder="Enter your password"
+            autoComplete="current-password"
           ></InputWrapper>
           <div className="flex flex-row justify-between mt-4 px-2">
             <div className="flex flex-row gap-2">
