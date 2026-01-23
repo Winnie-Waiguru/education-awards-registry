@@ -16,9 +16,10 @@ const pool = new Pool({
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  port: Number(process.env.DB_PORT),
 });
 
+// Endpoint to register a new school
 app.post("/api/register-school", async (req, res) => {
   const { schoolName, schoolEmail } = req.body;
 
@@ -37,6 +38,30 @@ app.post("/api/register-school", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Endpoint to login based on whether user in DB
+app.post("/api/login", async (req, res) => {
+  console.log("Received login request:", req.body);
+
+  const { email } = req.body;
+  console.log("Login attempt for email:", email);
+
+  try {
+    const result = await pool.query(
+      "SELECT official_email FROM school WHERE official_email = $1",
+      [email],
+    );
+
+    if (result.rows.length > 0) {
+      res.status(200).json({ message: "Login successful" });
+    } else {
+      res.status(401).json({ error: "Invalid email or password" });
+    }
+  } catch (error) {
+    console.error("Database error during login:", error);
+    res.status(500).json({ error: "Database error", details: error.message });
+  }
+});
+
+app.listen(port, "localhost", () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
