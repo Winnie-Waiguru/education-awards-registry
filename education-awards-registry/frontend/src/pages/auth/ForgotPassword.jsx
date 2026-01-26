@@ -13,7 +13,7 @@ function ForgotPassword() {
   const [schoolEmail, setSchoolEmail] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handlePasswordReset = (e) => {
+  const handlePasswordReset = async (e) => {
     e.preventDefault(); //prevent page reload
 
     // Handle Signup Logic
@@ -25,11 +25,28 @@ function ForgotPassword() {
 
     setErrors(newErrors);
 
-    // If no errors, proceed with registration
+    // If no errors, proceed with password reset request
     if (Object.keys(newErrors).length === 0) {
       // Reset errors
       setErrors({});
-      console.log("Registration successful");
+      try {
+        const response = await fetch("api/reset-password", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ schoolName, schoolEmail }),
+        });
+        if (!response.ok) {
+          const errorData = await response.text();
+          throw new Error(`Request failed: ${errorData}`);
+        }
+
+        const data = await response.json();
+        console.log("Password reset request sent:", data);
+      } catch (error) {
+        console.error("Error sending password reset request:", error);
+      }
     }
   };
 
